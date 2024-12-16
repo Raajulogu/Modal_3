@@ -1,7 +1,6 @@
 import { Folder } from 'lucide-react';
 import type { ShareFolder } from '../../types';
 import { ButtonBase } from '../UI/ButtonBase';
-import { useState } from 'react';
 import axios from 'axios';
 
 interface ShareFolderButtonProps {
@@ -9,30 +8,11 @@ interface ShareFolderButtonProps {
 }
 
 export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
-  const [error, setError] = useState<string | null>(null);
 
-   const handleClicks = async () => {
-    // try {
-    //   // Check if the File System Access API is available
-    //   if ('showDirectoryPicker' in window) {
-    //     const directoryHandle = await (window as any).showDirectoryPicker();
-    //     console.log(`Opened directory: ${directoryHandle.name}`);
-    //     setError(null);
-    //   } else {
-    //     throw new Error('File System Access API is not supported in this browser.');
-    //   }
-    // } catch (err) {
-    //   console.error('Error opening folder:', err);
-    //   setError('Unable to open folder. Please check your browser settings or try a different browser.');
-    // }
-    // if (window.electron) {
-    //   window.electron.openFolder(folder.path);
-    // }
-  };
   const handleClick = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/smb/list', {
-        params: { remotePath:folder.path },
+      const response = await axios.get(`http://localhost:5000/api/download`, {
+        params: { path: encodeURIComponent(folder.path) },
         responseType: 'blob', // Ensure the response is treated as a file
       });
 

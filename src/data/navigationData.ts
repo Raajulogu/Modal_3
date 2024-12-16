@@ -26,7 +26,7 @@ export const shareFolders =
 //   { name: 'Projects', path: 'file://wtc1501cifs.prod.local/ORGSHARE/TEAMS/ERP Shared Folder/NCR Atleos/Atleos Operations Planning/Global Ops Analytics/Projects' }
 // ];
 [
-  { name: 'POR', path: '/home/dotzza/Dotzza' },
+  { name: 'POR', path: '/home/rajesh/Ratni/Ratni Adhaar.jpeg' },
   { name: 'DEP POR', path: 'C:\\Vasanthan\\Project\\Doc\\F2' },
   { name: 'Backlog Changes', path: 'C:\\Vasanthan\\Project\\Doc\\F3' },
   { name: 'Schedule Stability', path: 'C:\\Vasanthan\\Project\\Doc\\F4' },

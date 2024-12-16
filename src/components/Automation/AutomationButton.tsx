@@ -46,8 +46,9 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileSpreadsheet, Image as ImageIcon, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { AutomationItem } from '../../types';
+import axios from 'axios';
 
 interface AutomationCardProps {
   item: AutomationItem;
@@ -55,22 +56,21 @@ interface AutomationCardProps {
 }
 
 export default function AutomationButton({ item, index }: AutomationCardProps) {
-  const [activeTab, setActiveTab] = useState<'sop' | 'automation'>('sop');
+  // const [activeTab, setActiveTab] = useState<'sop' | 'automation'>('sop');
   const [isImageFullscreen, setIsImageFullscreen] = useState(false);
 
-  const handleFileOpen = async (path:string) => {
+  const handleFileOpen = async (path:string="") => {
     try {
-      // Check if the File System Access API is available
-      if ('showDirectoryPicker' in window) {
-        const directoryHandle = await (window as any).showDirectoryPicker();
-        console.log(`Opened directory: ${directoryHandle.name}`);
-        // setError(null);
-      } else {
-        throw new Error('File System Access API is not supported in this browser.');
+      const response = await axios.post('http://localhost:5000/api/open', {
+        path: encodeURIComponent(path),
+      });
+  
+      if (response.status === 200) {
+        alert('File opened successfully!');
       }
-    } catch (err) {
-      console.error('Error opening folder:', err);
-      // setError('Unable to open folder. Please check your browser settings or try a different browser.');
+    } catch (error) {
+      console.error('Error opening file:', error);
+      alert('Failed to open the file.');
     }
   };
 
