@@ -8,6 +8,10 @@ import { Card } from '../components/UI/Card';
 export const Dashboard = () => {
   const navigate = useNavigate();
 
+  const handleNavigate=()=>{
+    window.open("http://localhost:5000/local-page")
+  }
+
   return (
     <div className="min-h-screen">
       <AnimatedBackground />
@@ -17,7 +21,7 @@ export const Dashboard = () => {
         <div className="grid grid-cols-2 gap-8 max-w-2xl mx-auto">
           <Card>
             <ButtonBase
-              onClick={() => navigate('/sop-sites')}
+              onClick={handleNavigate}
               variant="glass"
               size="lg"
               className="w-full flex-col"

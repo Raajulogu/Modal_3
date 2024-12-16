@@ -6,14 +6,11 @@ import { PowerBIButton } from '../components/SOPSites/PowerBIButton';
 import { ShareFolderButton } from '../components/SOPSites/ShareFolderButton';
 import { ExternalLinkButton } from '../components/SOPSites/ExternalLinkButton';
 import { powerBIReports, shareFolders, externalLinks } from '../data/navigationData';
-import { Image } from 'lucide-react';
 
-import image from "../images/images.png"
 import image2 from "../images/image2.jpeg"
 
 export const SOPSites = () => {
   const [activeSection, setActiveSection] = useState<'powerbi' | 'folders' | 'links' | 'team'>('powerbi');
-
   return (
     <div className="min-h-screen">
       <AnimatedBackground />
@@ -69,6 +66,7 @@ export const SOPSites = () => {
                 <ShareFolderButton key={folder.name} folder={folder} />
               ))
             )}
+           
 
             {activeSection === 'links' && (
               externalLinks.map((link) => (
@@ -87,6 +85,7 @@ export const SOPSites = () => {
           </motion.div>
         </motion.div>
       </main>
+      
     </div>
   );
 };
