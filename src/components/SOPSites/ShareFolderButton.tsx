@@ -44,6 +44,7 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
 
   const handleClick = () => {
     setOpen(!open);
+    setCurrentPath("")
   };
 
   return (
@@ -53,9 +54,9 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
         variant="glass"
         className="w-full justify-between group p-4 border rounded-lg shadow-lg hover:shadow-xl transition-shadow"
       >
-        <a href={folder.path} target="_blank" className="text-lg font-semibold text-gray-800 hover:text-blue-600">
-          {folder.name}
-        </a>
+        <span>
+        {folder.name}
+        </span>
         <Folder
           size={20}
           className="text-yellow-400 group-hover:text-yellow-300 transition-colors"

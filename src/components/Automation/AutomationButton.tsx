@@ -1,47 +1,3 @@
-// import { FileText, Play } from 'lucide-react';
-// import type { AutomationItem } from '../../types';
-// import { Card } from '../UI/Card';
-// import { ButtonBase } from '../UI/ButtonBase';
-
-// interface AutomationButtonProps {
-//   item: AutomationItem;
-// }
-
-// export const AutomationButton = ({ item }: AutomationButtonProps) => {
-//   const handleViewSOP = () => {
-//     console.log(`Opening SOP: ${item.sopPath}`);
-//   };
-
-//   const handleRunAutomation = () => {
-//     console.log(`Running automation: ${item.automationPath}`);
-//   };
-
-//   return (
-//     <Card>
-//       <h3 className="text-white font-medium mb-4">{item.name}</h3>
-//       <div className="flex gap-3">
-//         <ButtonBase
-//           onClick={handleViewSOP}
-//           variant="glass"
-//           size="sm"
-//           className="flex-1"
-//         >
-//           <FileText size={16} className="text-blue-400" />
-//           <span>View SOP</span>
-//         </ButtonBase>
-//         <ButtonBase
-//           onClick={handleRunAutomation}
-//           variant="primary"
-//           size="sm"
-//           className="flex-1"
-//         >
-//           <Play size={16} />
-//           <span>Run</span>
-//         </ButtonBase>
-//       </div>
-//     </Card>
-//   );
-// };
 
 
 import React, { useState } from 'react';
@@ -59,18 +15,15 @@ export default function AutomationButton({ item, index }: AutomationCardProps) {
   // const [activeTab, setActiveTab] = useState<'sop' | 'automation'>('sop');
   const [isImageFullscreen, setIsImageFullscreen] = useState(false);
 
-  const handleFileOpen = async (path:string="") => {
+  const handleFileOpen = async (fileName: any) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/open', {
-        path: encodeURIComponent(path),
+      const response = await axios.post('http://localhost:5000/api/files/open', null, {
+        params: { path: "/home/dotzza/Pictures/Screenshots/test2.png" },
       });
-  
-      if (response.status === 200) {
-        alert('File opened successfully!');
-      }
+      alert(response.data.message);
     } catch (error) {
       console.error('Error opening file:', error);
-      alert('Failed to open the file.');
+      alert('Failed to open file');
     }
   };
 

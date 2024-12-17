@@ -8,6 +8,7 @@ import { ExternalLinkButton } from '../components/SOPSites/ExternalLinkButton';
 import { powerBIReports, shareFolders, externalLinks } from '../data/navigationData';
 
 import image2 from "../images/image2.jpeg"
+import { BarChart2Icon, Folder, Link, PowerIcon, User } from 'lucide-react';
 
 export const SOPSites = () => {
   const [activeSection, setActiveSection] = useState<'powerbi' | 'folders' | 'links' | 'team'>('powerbi');
@@ -41,10 +42,10 @@ export const SOPSites = () => {
                   }
                 `}
               >
-                {section === 'powerbi' && 'Power BI Reports'}
-                {section === 'folders' && 'Share Folders'}
-                {section === 'links' && 'Links'}
-                {section === 'team' && 'Team'}
+                {section === 'powerbi' && <span className='flex w-full justify-between'>Power BI Reports <BarChart2Icon/></span>}
+                {section === 'folders' && <span className='flex w-full justify-between'>Share Folders <Folder/></span>}
+                {section === 'links' && <span className='flex w-full justify-between'>Links <Link/></span>}
+                {section === 'team' && <span className='flex w-full justify-between'>Team <User/></span>}
               </button>
             ))}
           </div>

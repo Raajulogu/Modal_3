@@ -27,7 +27,7 @@ export const shareFolders =
 // ];
 [
   { name: 'POR', path: '/home/dotzza/Modal_2' },
-  { name: 'DEP POR', path: 'C:\\Vasanthan\\Project\\Doc\\F2' },
+  { name: 'DEP POR', path: '/home/dotzza/Dotzza' },
   { name: 'Backlog Changes', path: 'C:\\Vasanthan\\Project\\Doc\\F3' },
   { name: 'Schedule Stability', path: 'C:\\Vasanthan\\Project\\Doc\\F4' },
   { name: 'OTD & Lead Time', path: 'C:\\Vasanthan\\Project\\Doc\\F5' },
