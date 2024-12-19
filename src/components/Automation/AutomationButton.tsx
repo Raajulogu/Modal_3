@@ -119,7 +119,7 @@ export default function AutomationButton({ item, index }: AutomationCardProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setIsImageFullscreen(true)}
+            onClick={() => window.open(item.imagePath, '_blank')}
             className="cursor-pointer"
           >
             <motion.img

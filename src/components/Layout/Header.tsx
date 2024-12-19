@@ -26,13 +26,13 @@ export const Header = () => {
 
   const isSigninVisible = params !== "/automation" && params !== "/signin";
   const isHomeVisible = params !== "/";
-   const isImageVisible = params !== "/signin"
+  const isImageVisible = params !== "/signin"
 
   return (
-    <header className="relative flex items-center bg-white/10 backdrop-blur-md border-b border-white/10 p-4 px-20 w-full min-h-[80px]">
+    <header className="relative flex items-center bg-white/10 backdrop-blur-md border-b border-white/10 p-4 px-20 w-full h-[60px]">
       <div className=" flex justify-between items-center gap-8">
-        {isImageVisible && <img src={logo} className='w-30 h-14' />}
-        {isHomeVisible && <motion.button
+        {isImageVisible && <img src={logo} className='w-30 h-10' />}
+        {/* {isHomeVisible && <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate('/')}
@@ -40,7 +40,7 @@ export const Header = () => {
         >
           <Home size={28} />
           <span className="font-semibold text-xl">Home</span>
-        </motion.button>}
+        </motion.button>} */}
 
         {/* <motion.div
           className="text-center"
@@ -56,7 +56,7 @@ export const Header = () => {
 
 
       </div>
-      <div className='absolute top-[30%] xl:left-[40%] lg:left-[30%] md:left-[20%] w-[450px]'>
+      <div className='absolute top-[20%] xl:left-[40%] lg:left-[30%] md:left-[20%] w-[450px]'>
         <motion.div
           className=" "
           initial={{ opacity: 0 }}
@@ -65,7 +65,8 @@ export const Header = () => {
           <p className="text-indigo-300 text-2xl">Atleos Global Ops Analytics, Pudu</p>
         </motion.div>
       </div>
-      {isSigninVisible && <div className='absolute right-8  top-[20%]'>
+      {isSigninVisible ? 
+      <div className='absolute right-8  top-[20%]'>
         <motion.div
           className="flex flex-row gap-12"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -78,7 +79,20 @@ export const Header = () => {
             onClick={() => navigate('/signin')}
           />
         </motion.div>
-      </div>}
+      </div> :
+        isHomeVisible &&
+        <div className='absolute right-28  top-[20%]'>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 text-purple-300 hover:text-indigo-200 transition-colors"
+          >
+            <Home size={28} />
+            <span className="font-semibold text-xl">Home</span>
+          </motion.button>
+        </div>
+      }
     </header>
   );
 };

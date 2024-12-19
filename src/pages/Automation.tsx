@@ -3,8 +3,23 @@ import { Header } from '../components/Layout/Header';
 import { AnimatedBackground } from '../components/3D/Background';
 import { automationItems } from '../data/navigationData';
 import AutomationButton from '../components/Automation/AutomationButton';
+import { PublishButton } from '../components/PublishButton/PublishButton';
+import axios from 'axios';
 
 export const Automation = () => {
+
+  const handleFileOpen = async (fileName: any) => {
+    try {
+      const response = await axios.post('fileName', null, {
+        params: { path: "/home/dotzza/Pictures/Screenshots/test2.png" },
+      });
+      alert(response.data.message);
+    } catch (error) {
+      console.error('Error opening file:', error);
+      alert('Failed to open file');
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <AnimatedBackground />
@@ -19,6 +34,10 @@ export const Automation = () => {
           {automationItems.map((item,index) => (
             <AutomationButton key={item.name} item={item} index={index} />
           ))}
+
+          <span onClick={()=>handleFileOpen("")}>
+          <PublishButton />
+          </span>
         </motion.div>
       </main>
     </div>

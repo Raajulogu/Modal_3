@@ -1,0 +1,144 @@
+.publish-button {
+    position: relative;
+    padding: 1.5rem 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, 
+      #4338ca 0%,
+      #6d28d9 50%,
+      #7c3aed 100%
+    );
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 
+      0 20px 40px rgba(67, 56, 202, 0.3),
+      0 0 20px rgba(124, 58, 237, 0.5),
+      inset 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .publish-button:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    transform: translateZ(20px);
+  }
+  
+  .button-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+    transform: translateZ(50px);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button-text {
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(
+      to right,
+      #fff 20%,
+      #e0e7ff 40%,
+      #818cf8 60%,
+      #fff 80%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  .button-icon {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  .button-glow {
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%), 
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 60%
+    );
+    opacity: 0.5;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+  
+  .button-border {
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      45deg,
+      #4f46e5,
+      #7c3aed,
+      #2563eb,
+      #4f46e5
+    );
+    background-size: 200% 200%;
+    animation: borderGradient 4s linear infinite;
+    opacity: 0.8;
+    transform: translateZ(-10px);
+  }
+  
+  .button-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transform: translateX(-100%);
+    pointer-events: none;
+    z-index: 3;
+    mix-blend-mode: overlay;
+  }
+  
+  .button-backdrop {
+    position: absolute;
+    inset: 1px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    transform: translateZ(-20px);
+    filter: blur(4px);
+  }
+  
+  @keyframes borderGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .particles {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    transform: translateZ(30px);
+  }
+  
+  .particle {
+    position: absolute;
+    transform-origin: center;
+    filter: blur(0.5px);
+    box-shadow: 0 0 20px currentColor;
+  }

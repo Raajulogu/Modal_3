@@ -15,6 +15,7 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    
     // Fetch the list of files for the current path
     axios
       .get('http://localhost:5000/api/files', { params: { path: currentPath } })
@@ -26,12 +27,12 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
       });
   }, [currentPath]);
 
-  const handleDownload = (fileName: any) => {
+  const handleDownload = (fileName:string) => {
     const filePath = currentPath ? `${currentPath}/${fileName}` : fileName;
     window.location.href = `http://localhost:5000/api/files/download?path=${encodeURIComponent(filePath)}`;
   };
 
-  const handleFolderClick = (folderName: any) => {
+  const handleFolderClick = (folderName: string) => {
     const newPath = currentPath ? `${currentPath}/${folderName}` : folderName;
     setCurrentPath(newPath); // Navigate to the clicked folder
   };
@@ -43,6 +44,10 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
   };
 
   const handleClick = () => {
+    if(folder.name==="Backlog Changes"){
+      window.open(folder.path,"_blank")
+      return false;
+    }
     setOpen(!open);
     setCurrentPath("")
   };
@@ -77,7 +82,7 @@ export const ShareFolderButton = ({ folder }: ShareFolderButtonProps) => {
           )}
 
           <ul className="space-y-3">
-            {files.map((file: any, index) => (
+            {files.map((file: any, index:number) => (
               <li
                 key={index}
                 className="flex justify-between items-center p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
